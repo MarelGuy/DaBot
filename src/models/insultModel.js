@@ -5,7 +5,7 @@ const insultSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    for: { required: true, type: String, enum: ["ale", "cris", "teo", "loris"] }
+    for: { required: true, type: String, enum: ["ale", "cris", "teo", "loris", "ivan"] }
 })
 
 module.exports = mongoose.model("insults", insultSchema)
