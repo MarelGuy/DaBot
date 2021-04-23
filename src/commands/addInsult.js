@@ -12,6 +12,7 @@ module.exports = {
         args.shift()
         body.insulto = args.join(" ");
 
-        const { _id } = await new insultModel(body).save()
+        await new insultModel(body).save()
+        message.channel.send("Insulto aggiunto!");
     }
 };
