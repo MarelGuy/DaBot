@@ -1,6 +1,6 @@
 module.exports = {
     name: 'message',
-    execute(message, client) {
+    execute: async (message, client) => {
         if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
 
         const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
@@ -10,7 +10,7 @@ module.exports = {
             return;
 
         try {
-            client.commands.get(command).execute(message, args);
+            client.commands.get(command).execute(message, args, client);
         } catch (error) {
             console.error(error);
             message.reply('there was an error trying to execute that command!');
