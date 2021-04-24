@@ -1,6 +1,6 @@
 {
   "name": "dabot",
-  "version": "1.1.0",
+  "version": "0.1.2-ALPHA_RELEASE",
   "description": "new discord bot, it's marel's test subject",
   "main": "src/index.js",
   "scripts": {
