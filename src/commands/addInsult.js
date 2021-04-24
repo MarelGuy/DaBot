@@ -2,17 +2,22 @@ module.exports = {
     name: 'aggiungi-insulto',
     description: 'Insulti su ale',
     execute: async (message, args) => {
-        const insultModel = require("../models/insultModel")
+        try {
+            const insultModel = require("../models/insultModel")
 
-        let body = {
-            insulto: args,
-            for: args[0]
+            let body = {
+                insulto: args,
+                for: args[0]
+            }
+
+            args.shift()
+            body.insulto = args.join(" ");
+
+            await new insultModel(body).save()
+            message.channel.send("Insulto aggiunto!");
+        } catch (error) {
+            message.channel.send("La persona che vuoi insultare non esiste!");
         }
 
-        args.shift()
-        body.insulto = args.join(" ");
-
-        await new insultModel(body).save()
-        message.channel.send("Insulto aggiunto!");
     }
 };
