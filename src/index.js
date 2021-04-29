@@ -10,8 +10,11 @@ const express = require('express');
 const app = express();
 
 const port = process.env.PORT
+global.url = 'http://localhost:3005/'
 
 const mongoose = require('mongoose')
+
+const allRoutes = require("./services")
 
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
@@ -22,6 +25,9 @@ for (const file of eventFiles) {
     }
 }
 
+app.use(express.json());
+
+app.use("/", allRoutes)
 
 mongoose
     .connect(process.env.MONGO_CONNECTION, {
