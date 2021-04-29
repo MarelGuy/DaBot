@@ -1,6 +1,6 @@
 module.exports = {
     name: 'bonk',
-    description: 'Ti da la latenza',
+    description: 'Bonks you',
     execute: async (message, args, client) => {
         try {
             const broadcast = client.voice.createBroadcast();

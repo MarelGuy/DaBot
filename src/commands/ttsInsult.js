@@ -1,19 +1,31 @@
 module.exports = {
-    name: 'tts-insulta',
-    description: 'Ti da la latenza',
+    name: 'tts-insult',
+    description: 'Insults someone with text-to-speech',
     execute: async (message, args, client) => {
-        try {
-            const broadcast = client.voice.createBroadcast();
-            const insultModel = require("../models/insultModel")
-            const discordTTS = require("discord-tts");
-            const insulti = await insultModel.find({ for: args[0].toString() })
-            const insulto = await insulti[Math.floor(Math.random() * insulti.length)].insulto.toString()
+        const broadcast = client.voice.createBroadcast();
+        const discordTTS = require("discord-tts");
+        const axios = require('axios');
 
-            await message.member.voice.channel.join()
-                .then(connection => {
-                    broadcast.play(discordTTS.getVoiceStream(insulto));
-                    const dispatcher = connection.play(broadcast);
-                });
+        try {
+            const body = {
+                for: args[0]
+            }
+            await axios.post(url + "insults/rand", body)
+                .then(async res => {
+                    await message.member.voice.channel.join()
+                        .then(connection => {
+                            broadcast.play(discordTTS.getVoiceStream(res.data.insulto));
+                            connection.play(broadcast);
+                        });
+                })
+                .catch(err => {
+                    if (err.request.res.statusCode === 404)
+                        message.channel.send("The person that you want to insult doesn't exist!");
+                    else
+                        message.channel.send("Error 500, server error");
+                })
+
+
         } catch (err) {
             console.log(err)
         }

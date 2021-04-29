@@ -5,6 +5,9 @@ const personSchema = new mongoose.Schema({
         required: true,
         type: String
     },
+    insulti: {
+        type: Number
+    }
 })
 
 module.exports = mongoose.model("persons", personSchema)

@@ -1,10 +1,9 @@
 module.exports = {
-    name: 'aggiungi-persona',
-    description: 'Insulti su ale',
+    name: 'add-person',
+    description: 'Adds a person to the database',
     execute: async (message, args) => {
+        const axios = require('axios')
         if (args.length === 1) {
-            const personModel = require("../models/personModel")
-
             let body = {
                 nome: args[0]
             }
@@ -12,8 +11,13 @@ module.exports = {
             args.shift()
             body.insulto = args.join(" ");
 
-            await new personModel(body).save()
-            message.channel.send("Persona aggiunta!");
+            await axios.post("http://127.0.0.1:3005/persons", body)
+                .then(async res => {
+                    if (res.status === 201)
+                        message.channel.send("Person added!");
+                    else
+                        message.channel.send("Error 500, server error");
+                })
         } else {
             message.channel.send("Must provide just one argument!");
         }
