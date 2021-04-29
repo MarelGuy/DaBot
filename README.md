@@ -48,7 +48,7 @@ I created this bot just for fun. Everyone can use it and/or contribute to it.
 
 ### How did you create this bot?
 
-Here's a list of waht frameworks and what API i used:
+Here's a list of waht frameworks and what API I used:
 
 - ExpressJS for the backend API.
 - MongoDB for the database.
@@ -58,13 +58,13 @@ Here's a list of waht frameworks and what API i used:
 
 ### Will you update this bot?
 
-Of course i will, for now this is just the beta of the bot (I will do the official release on version 1.0).
+Of course I will, for now this is just the beta of the bot (I will do the official release on version 1.0).
 
-### How can i contribute?
+### How can I contribute?
 
-You can fork the repo and then i'll check if i can merge it to the main branch
+You can fork the repo and then I'll check if I can merge it to the main branch
 
-### I have a question, where can i contact you?
+### I have a question, where can I contact you?
 
 Here's a list of my contacts:
 
