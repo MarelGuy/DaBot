@@ -2,11 +2,11 @@ module.exports = {
     name: 'tts-insult',
     description: 'Insults someone with text-to-speech',
     execute: async (message, args, client) => {
-        const broadcast = client.voice.createBroadcast();
-        const discordTTS = require("discord-tts");
-        const axios = require('axios');
-
         try {
+            const broadcast = client.voice.createBroadcast();
+            const discordTTS = require("discord-tts");
+            const axios = require('axios');
+
             const body = {
                 for: args[0]
             }
@@ -24,10 +24,8 @@ module.exports = {
                     else
                         message.channel.send("Error 500, server error");
                 })
-
-
         } catch (err) {
-            console.log(err)
+            message.channel.send("The bot encountered an internal error")
         }
     }
 }
