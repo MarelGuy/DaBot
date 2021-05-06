@@ -28,10 +28,6 @@ Searches the first argument in the MongoDB and if he finds it, then it sends a r
 
 Searches the first argument in the MongoDB and if he finds it, then it sends a request to a tts service and then use a random insult.
 
-### `$bonk`
-
-Joins a vocal channel and then literally bonks you.
-
 ### `$ping`
 
 Gives the latency.
