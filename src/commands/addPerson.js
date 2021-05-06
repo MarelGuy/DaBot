@@ -14,9 +14,7 @@ module.exports = {
             await axios.post("http://127.0.0.1:3005/persons", body)
                 .then(async res => {
                     if (res.status === 201)
-                        message.channel.send("Person added!");
-                    else
-                        message.channel.send("Error 500, server error");
+                        message.channel.send("Person added!")
                 })
         } else {
             message.channel.send("Must provide just one argument!");
